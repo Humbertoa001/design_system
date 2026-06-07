@@ -212,7 +212,7 @@
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
   color: var(--text-muted);
-  margin: var(--spacing-xs) 0 0;
+  margin: 0 0 0;
 }
 
 /* ---------- Overline / label editorial ----------
