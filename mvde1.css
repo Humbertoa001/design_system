@@ -184,6 +184,7 @@
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
   color: var(--text-dark);
+  margin: 0;
 }
 
 .t-h3 {
@@ -192,6 +193,7 @@
   font-size: var(--text-xl);
   line-height: var(--leading-snug);
   color: var(--text-dark);
+  margin: 0;
 }
 
 /* ---------- Corpo ---------- */
