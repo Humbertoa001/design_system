@@ -1,0 +1,756 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;
+
+/* ============================================================
+   MVDE · mvde.css — bundle único (tokens + typography + components)
+   Gerado a partir de tokens.css + typography.css + components.css.
+   Para preview em sandbox (GPT/Gem): cole TODO este conteúdo dentro
+   de uma tag <style> no <head>, ou hospede e referencie por URL.
+   ============================================================ */
+
+/* ============================================================
+   MVDE · Design Tokens — Editorial Japandi
+   A matemática do sistema: superfícies de papel creme, verde-
+   floresta profundo, acentos cobre/terracota e muito vazio (Ma).
+   Fonte canônica: arquivos design_system*.html (Editorial Japandi).
+   ============================================================ */
+
+:root {
+  /* ---------- Fundos e superfícies (papel creme editorial) ---------- */
+  --bg-base:    #f4eee6;  /* fundo de página */
+  --bg-surface: #fbf8f4;  /* superfície / card pai (afunda) */
+  --bg-element: #e8dfd5;  /* elemento secundário / botão suave */
+  --bg-card:    #ffffff;  /* card que se eleva */
+
+  /* ---------- Tipografia (verde-floresta escuro) ---------- */
+  --text-dark:  #22332a;  /* texto principal — nunca preto puro */
+  --text-muted: #68756d;  /* texto secundário */
+  --text-light: #a3aca6;  /* texto terciário / desabilitado */
+
+  /* ---------- Acentos (cores da "capa de revista") ---------- */
+  --accent-sage: #344e41; /* verde profundo — positivo / sucesso */
+  --accent-clay: #ba6442; /* cobre / terracota — ação / destaque */
+  --accent-rose: #d68d6c; /* terracota suave — negativo / risco */
+
+  /* ---------- Utilidades ---------- */
+  --border-soft: #e2dad0;             /* divisórias calmas */
+  --backdrop:    rgba(34, 51, 42, 0.15); /* fundo de modal */
+
+  /* ---------- Raio (formas orgânicas, sem cantos agressivos) ---------- */
+  --radius-sm:   0.5rem;  /*  8px — ícones e tags */
+  --radius-md:   1rem;    /* 16px — inputs, selects, toasts */
+  --radius-lg:   2rem;    /* 32px — cards filho */
+  --radius-xl:   2.5rem;  /* 40px — containers avô/pai */
+  --radius-full: 9999px;  /*  pílulas e botões */
+
+  /* ---------- Espaçamento (o conceito de Ma) ---------- */
+  --spacing-xs: 0.5rem;  /*  8px */
+  --spacing-sm: 1rem;    /* 16px */
+  --spacing-md: 1.5rem;  /* 24px */
+  --spacing-lg: 2rem;    /* 32px */
+  --spacing-xl: 3rem;    /* 48px */
+
+  /* ---------- Bordas (divisórias quase invisíveis) ---------- */
+  --border-width-thin:  1px;  /* neutro */
+  --border-width-thick: 2px;  /* selecionado / focado */
+
+  /* ---------- Tipografia: família única (100% Inter) ---------- */
+  --font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-serif: var(--font-sans);  /* arquitetura de fonte única */
+  --font-mono:  var(--font-sans);
+
+  /* ---------- Tipografia: tamanhos ---------- */
+  --text-micro:   0.625rem;  /* 10px — badges, overlines */
+  --text-xs:      0.75rem;   /* 12px */
+  --text-sm:      0.875rem;  /* 14px — legendas, apoio */
+  --text-base:    1rem;      /* 16px — corpo e inputs */
+  --text-lg:      1.125rem;  /* 18px */
+  --text-xl:      1.25rem;   /* 20px — títulos de card */
+  --text-2xl:     1.5rem;    /* 24px */
+  --text-3xl:     1.875rem;  /* 30px — H2 de módulo */
+  --text-4xl:     2.25rem;   /* 36px — H1 da página */
+  --text-5xl:     3rem;      /* 48px — hero */
+  --text-display: 4.5rem;    /* 72px — editorial / números enormes */
+
+  /* ---------- Tipografia: pesos (sutis, nunca pesados) ---------- */
+  --font-light:    300;  /* corpo, descrições */
+  --font-normal:   400;
+  --font-medium:   500;  /* títulos, elementos clicáveis */
+  --font-semibold: 600;  /* badges, labels, micro-texto */
+
+  /* ---------- Tipografia: entrelinha (leading) ---------- */
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-relaxed: 1.6;
+
+  /* ---------- Tipografia: tracking ---------- */
+  --tracking-tighter: -0.04em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.1em;
+  --tracking-widest:   0.2em;  /* overlines uppercase */
+
+  /* ---------- Sombras e elevação (dispersão ampla, baixa opacidade) ---------- */
+  --shadow-sm:    0 2px 8px   rgba(63, 58, 51, 0.04);  /* dropdowns, tags */
+  --shadow-base:  0 4px 20px  rgba(63, 58, 51, 0.05);  /* card padrão (Japandi) */
+  --shadow-hover: 0 12px 32px rgba(63, 58, 51, 0.08);  /* elevado no hover */
+}
+
+/* ============================================================
+   MODO ESCURO — carvão esverdeado, quente (nunca frio)
+   ============================================================ */
+.dark,
+:root[data-theme="dark"] {
+  --bg-base:    #1a1e1b;
+  --bg-surface: #222824;
+  --bg-element: #2d3630;
+  --bg-card:    #262d29;
+
+  --text-dark:  #e8edea;
+  --text-muted: #9ca6a0;
+  --text-light: #6d7871;
+
+  --accent-sage: #6a8a7a;
+  --accent-clay: #d18262;
+  --accent-rose: #e0aa92;
+
+  --border-soft: #323d37;
+  --backdrop:    rgba(26, 30, 27, 0.8);
+
+  --shadow-sm:    0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-base:  0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   PALETA DE PRODUTO ESTENDIDA (app MVDE) — opcional
+   Famílias nomeadas usadas em telas do produto. Mantidas para
+   continuidade; o sistema canônico prioriza sage/clay/rose acima.
+   Mapeamento: sage≈verde · clay/rose≈terracota.
+   ============================================================ */
+:root {
+  --verde:      #355544;  --soft-verde:     #5B6D61;
+  --azul:       #28374A;  --soft-azul:      #525E6C;
+  --terracota:  #8A4022;  --soft-terracota: #A67B69;
+  --laranja:    #D97757;  --soft-laranja:   #E19279;
+  --mostarda:   #937024;  --soft-mostarda:  #A98D50;
+  --terra:      #BF8465;  --soft-terra:     #CA9B81;
+}
+
+
+/* ============================================================
+   MVDE · Tipografia — Editorial Japandi
+   Arquitetura de fonte única: 100% Inter. A hierarquia nasce só
+   de peso, tamanho e espaço (Ma) — não de famílias diferentes.
+   Requer tokens.css.
+   ============================================================ */
+
+400;500;600&display=swap');
+
+/* ---------- Display & títulos editoriais ----------
+   Voz editorial = Inter Light, grande, tracking apertado. */
+
+.t-display {
+  font-family: var(--font-sans);
+  font-weight: var(--font-light);
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--text-dark);
+}
+
+.t-hero {
+  font-family: var(--font-sans);
+  font-weight: var(--font-light);
+  font-size: var(--text-5xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-dark);
+}
+
+.t-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-medium);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-dark);
+}
+
+.t-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-medium);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-dark);
+}
+
+.t-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-medium);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--text-dark);
+}
+
+/* ---------- Corpo ---------- */
+
+.t-body {
+  font-family: var(--font-sans);
+  font-weight: var(--font-light);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-dark);
+}
+
+.t-body-sm {
+  font-family: var(--font-sans);
+  font-weight: var(--font-light);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--text-muted);
+}
+
+/* ---------- Overline / label editorial ----------
+   Onipresente: uppercase, tracking 0.2em, semibold, micro. */
+
+.t-overline {
+  font-family: var(--font-sans);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-micro);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent-clay);
+}
+
+/* Variantes semânticas da overline */
+.t-overline--sage  { color: var(--accent-sage); }
+.t-overline--muted { color: var(--text-light); }
+
+/* ---------- Caption ---------- */
+
+.t-caption {
+  font-family: var(--font-sans);
+  font-weight: var(--font-medium);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   MVDE · Componentes — Editorial Japandi
+   Classes reutilizáveis fiéis aos arquivos de referência.
+   Requer tokens.css + typography.css. Ícones: Lucide, stroke 1.5.
+   ============================================================ */
+
+/* ---------------------------------------------------------- */
+/*  BOTÕES                                                     */
+/* ---------------------------------------------------------- */
+
+.mvde-btn {
+  font-family: var(--font-sans);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-full);
+  padding: 0.875rem 2rem;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-normal);
+  cursor: pointer;
+  transition: background-color .3s, color .3s, border-color .3s,
+              box-shadow .3s, transform .3s, opacity .3s;
+}
+
+/* Primário — sólido escuro sobre creme (contraste máximo, calmo) */
+.mvde-btn--primary {
+  background: var(--text-dark);
+  color: var(--bg-base);
+  box-shadow: var(--shadow-base);
+}
+.mvde-btn--primary:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+/* Secundário — superfície suave */
+.mvde-btn--secondary {
+  background: var(--bg-element);
+  color: var(--text-dark);
+}
+.mvde-btn--secondary:hover { filter: brightness(0.96); }
+
+/* Com ícone — contorno que ganha acento cobre no hover */
+.mvde-btn--icon {
+  background: var(--bg-surface);
+  color: var(--text-dark);
+  border-color: var(--border-soft);
+  box-shadow: var(--shadow-sm);
+}
+.mvde-btn--icon:hover { border-color: var(--accent-clay); background: var(--bg-card); }
+
+/* Texto / ghost — sublinhado que cresce no hover */
+.mvde-btn--text {
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 0;
+  padding: 0.875rem 0.25rem;
+  position: relative;
+}
+.mvde-btn--text::after {
+  content: "";
+  position: absolute;
+  bottom: 0.5rem; left: 50%;
+  width: 0; height: 1px;
+  background: var(--text-dark);
+  transform: translateX(-50%);
+  transition: width .3s;
+}
+.mvde-btn--text:hover { color: var(--text-dark); }
+.mvde-btn--text:hover::after { width: 60%; }
+
+.mvde-btn:disabled,
+.mvde-btn--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
+  background: var(--bg-element);
+  color: var(--text-light);
+}
+
+/* Botão-ícone circular isolado (ações sem rótulo) */
+.mvde-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem; height: 2.75rem;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color .3s, color .3s;
+}
+.mvde-iconbtn:hover { color: var(--text-dark); background: var(--bg-element); }
+.mvde-iconbtn--sage:hover { color: var(--accent-sage); background: color-mix(in srgb, var(--accent-sage) 10%, transparent); }
+.mvde-iconbtn--clay:hover { color: var(--accent-clay); background: color-mix(in srgb, var(--accent-clay) 10%, transparent); }
+.mvde-iconbtn--rose:hover { color: var(--accent-rose); background: color-mix(in srgb, var(--accent-rose) 10%, transparent); }
+
+/* ---------------------------------------------------------- */
+/*  CAMPOS DE FORMULÁRIO                                       */
+/* ---------------------------------------------------------- */
+
+.mvde-field { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.mvde-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent-sage);
+  padding-left: 0.25rem;
+}
+
+.mvde-input,
+.mvde-textarea {
+  font-family: var(--font-sans);
+  width: 100%;
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.25rem;
+  color: var(--text-dark);
+  font-size: var(--text-base);
+  font-weight: var(--font-light);
+  box-shadow: var(--shadow-sm);
+  transition: border-color .3s, box-shadow .3s;
+}
+.mvde-input::placeholder,
+.mvde-textarea::placeholder { color: var(--text-light); }
+.mvde-input:focus,
+.mvde-textarea:focus {
+  outline: none;
+  border-color: var(--accent-clay);
+  box-shadow: 0 0 0 1px var(--accent-clay);
+}
+.mvde-textarea { min-height: 6rem; resize: vertical; line-height: var(--leading-relaxed); }
+
+/* Estado de erro */
+.mvde-input--error,
+.mvde-input--error:focus {
+  border-color: var(--accent-rose);
+  box-shadow: 0 0 0 1px var(--accent-rose);
+}
+.mvde-field-error {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--accent-rose);
+  padding-left: 0.25rem;
+}
+
+.mvde-input:disabled,
+.mvde-textarea:disabled {
+  background: var(--bg-element);
+  border-color: transparent;
+  color: var(--text-light);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------- */
+/*  INPUT FINANCEIRO (R$)                                      */
+/*  R$ à esquerda · valor à direita · centavos ,00 fixos.     */
+/*  O usuário digita só os reais (sem centavos); a máscara    */
+/*  pt-BR insere os pontos de milhar. Use com money-input.js. */
+/* ---------------------------------------------------------- */
+
+.mvde-money {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-sans);
+  cursor: text;
+  transition: border-color .3s, box-shadow .3s;
+}
+.mvde-money:focus-within {
+  border-color: var(--accent-clay);
+  box-shadow: 0 0 0 1px var(--accent-clay);
+}
+
+/* Símbolo R$ — fixo à esquerda, discreto */
+.mvde-money__symbol {
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+}
+
+/* Campo do valor — cresce e alinha à direita, tabular */
+.mvde-money__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-dark);
+  padding: 0;
+}
+.mvde-money__input::placeholder { color: var(--text-light); font-weight: var(--font-light); }
+
+/* Centavos fixos ,00 — sempre visíveis, à direita, esmaecidos */
+.mvde-money__cents {
+  flex-shrink: 0;
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-light);
+}
+
+/* Variante de destaque (valor principal de uma tela) */
+.mvde-money--hero .mvde-money__input,
+.mvde-money--hero .mvde-money__cents { font-size: var(--text-3xl); }
+.mvde-money--hero .mvde-money__symbol { font-size: var(--text-base); }
+
+/* Estados de validação (reutilizam a semântica de cor) */
+.mvde-money--error { border-color: var(--accent-rose); box-shadow: 0 0 0 1px var(--accent-rose); }
+.mvde-money:has(.mvde-money__input:disabled) {
+  background: var(--bg-element);
+  border-color: transparent;
+  opacity: 0.6;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------- */
+/*  CONTROLES — toggle, checkbox, radio, slider               */
+/* ---------------------------------------------------------- */
+
+/* Switch toggle */
+.mvde-switch { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+.mvde-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.mvde-switch .track {
+  width: 2.75rem; height: 1.5rem;
+  background: var(--border-soft);
+  border-radius: var(--radius-full);
+  position: relative;
+  transition: background-color .3s;
+}
+.mvde-switch .track::after {
+  content: "";
+  position: absolute; top: 2px; left: 2px;
+  width: 1.25rem; height: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-full);
+  transition: transform .3s;
+}
+.mvde-switch input:checked + .track { background: var(--text-dark); }
+.mvde-switch input:checked + .track::after { transform: translateX(1.25rem); border-color: #fff; }
+.mvde-switch--sage input:checked + .track { background: var(--accent-sage); }
+.mvde-switch--clay input:checked + .track { background: var(--accent-clay); }
+
+/* Checkbox */
+.mvde-check {
+  appearance: none;
+  width: 1.25rem; height: 1.25rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  position: relative;
+  transition: background-color .3s, border-color .3s;
+}
+.mvde-check:checked { background: var(--accent-sage); border-color: var(--accent-sage); }
+.mvde-check:checked::after {
+  content: "";
+  position: absolute; left: 6px; top: 2px;
+  width: 4px; height: 9px;
+  border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.mvde-check--dark:checked { background: var(--text-dark); border-color: var(--text-dark); }
+.mvde-check--dark:checked::after { border-color: var(--bg-card); }
+
+/* Radio */
+.mvde-radio {
+  appearance: none;
+  width: 1.25rem; height: 1.25rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  cursor: pointer;
+  position: relative;
+  transition: border-color .3s;
+}
+.mvde-radio:checked { border-color: var(--text-dark); }
+.mvde-radio:checked::after {
+  content: "";
+  position: absolute; left: 50%; top: 50%;
+  width: 0.625rem; height: 0.625rem;
+  background: var(--text-dark);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%);
+}
+
+/* Slider / range */
+.mvde-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px;
+  background: var(--border-soft);
+  border-radius: var(--radius-full);
+  outline: none;
+}
+.mvde-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 1.125rem; height: 1.125rem;
+  background: var(--text-dark);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.mvde-slider::-moz-range-thumb {
+  width: 1.125rem; height: 1.125rem;
+  background: var(--text-dark);
+  border: 0; border-radius: var(--radius-full);
+  cursor: pointer;
+}
+.mvde-slider--sage::-webkit-slider-thumb { background: var(--accent-sage); }
+.mvde-slider--sage::-moz-range-thumb { background: var(--accent-sage); }
+
+/* Barra de progresso */
+.mvde-progress { width: 100%; height: 6px; background: var(--bg-surface); border-radius: var(--radius-full); overflow: hidden; }
+.mvde-progress > span { display: block; height: 100%; background: var(--accent-sage); border-radius: var(--radius-full); }
+
+/* ---------------------------------------------------------- */
+/*  CARDS — hierarquia de elevação (avô · pai · filho)        */
+/* ---------------------------------------------------------- */
+
+/* Avô (nível 1) — eleva da página com branco + sombra base */
+.mvde-card-avo {
+  background: var(--bg-card);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-base);
+}
+
+/* Pai (nível 2) — afunda em creme suave para criar um "berço" */
+.mvde-card-pai {
+  background: var(--bg-surface);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+/* Filho (nível 3) — eleva de volta com branco + sombra leve */
+.mvde-card-filho {
+  background: var(--bg-card);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+}
+.mvde-card-filho--interactive:hover { transform: translateY(-4px); box-shadow: var(--shadow-base); }
+
+/* Card escuro / invertido — destaque premium (nunca preto puro) */
+.mvde-card-dark {
+  background: var(--text-dark);
+  color: var(--bg-base);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-base);
+}
+
+/* Tile de adição — tracejado, vira cobre no hover */
+.mvde-card-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 10rem;
+  background: var(--bg-surface);
+  border: var(--border-width-thick) dashed var(--border-soft);
+  border-radius: var(--radius-lg);
+  color: var(--accent-clay);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: border-color .3s, background-color .3s;
+}
+.mvde-card-add:hover { border-color: var(--accent-clay); background: var(--bg-element); }
+
+/* Tile de ícone (avatar de card) */
+.mvde-icontile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; height: 2.5rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  color: var(--accent-clay);
+}
+
+/* ---------------------------------------------------------- */
+/*  BADGES / PILLS                                             */
+/* ---------------------------------------------------------- */
+
+.mvde-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-full);
+  border: var(--border-width-thin) solid transparent;
+}
+/* Semântica financeira estável: sage=positivo · muted=neutro · rose=negativo */
+.mvde-badge--positive {
+  background: color-mix(in srgb, var(--accent-sage) 10%, transparent);
+  color: var(--accent-sage);
+  border-color: color-mix(in srgb, var(--accent-sage) 20%, transparent);
+}
+.mvde-badge--neutral {
+  background: color-mix(in srgb, var(--text-muted) 10%, transparent);
+  color: var(--text-muted);
+  border-color: color-mix(in srgb, var(--text-muted) 20%, transparent);
+}
+.mvde-badge--negative {
+  background: color-mix(in srgb, var(--accent-rose) 10%, transparent);
+  color: var(--accent-rose);
+  border-color: color-mix(in srgb, var(--accent-rose) 20%, transparent);
+}
+/* Contador discreto */
+.mvde-badge--count {
+  font-size: var(--text-xs);
+  background: var(--border-soft);
+  color: var(--text-dark);
+  border: 0;
+}
+
+/* ---------------------------------------------------------- */
+/*  TOASTS                                                     */
+/* ---------------------------------------------------------- */
+
+.mvde-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 20rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-base);
+}
+.mvde-toast__icon {
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem;
+  border-radius: var(--radius-full);
+}
+.mvde-toast__title { margin: 0; font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--text-dark); }
+.mvde-toast__msg { margin: 0.125rem 0 0; font-size: var(--text-xs); color: var(--text-muted); line-height: var(--leading-relaxed); }
+.mvde-toast--success .mvde-toast__icon { background: color-mix(in srgb, var(--accent-sage) 10%, transparent); color: var(--accent-sage); }
+.mvde-toast--info    .mvde-toast__icon { background: color-mix(in srgb, var(--accent-clay) 10%, transparent); color: var(--accent-clay); }
+.mvde-toast--error   .mvde-toast__icon { background: color-mix(in srgb, var(--accent-rose) 10%, transparent); color: var(--accent-rose); }
+
+/* ---------------------------------------------------------- */
+/*  MODAL                                                      */
+/* ---------------------------------------------------------- */
+
+.mvde-modal-backdrop {
+  position: fixed; inset: 0;
+  background: var(--backdrop);
+  backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 50;
+}
+.mvde-modal {
+  position: relative;
+  width: 100%; max-width: 24rem;
+  margin: 1rem;
+  background: var(--bg-card);
+  border: var(--border-width-thin) solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------------------------------------------------------- */
+/*  OVERLINE DE SEÇÃO + DIVISOR                                */
+/* ---------------------------------------------------------- */
+
+.mvde-section-overline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent-sage);
+}
+
+.mvde-divider { height: 1px; background: var(--border-soft); border: 0; }
